@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.accela.coding.exercise.util.Constants.SUCCESS;
+import static com.accela.coding.exercise.util.Constants.*;
 
 @RestController
 @RequestMapping(path = "/person")
@@ -30,7 +30,7 @@ public class PersonController {
     public Response<Person> getPersonById(@Validated @PathVariable Integer id) {
         Person person = personService.getPersonById(id);
         if (person == null) {
-            throw new ResourceNotFoundException(String.format("Person with id %d not Found", id));
+            throw new ResourceNotFoundException(String.format(PERSON_NOT_FOUND_ID, id));
         }
         return new Response<>(SUCCESS, person);
     }
@@ -51,7 +51,7 @@ public class PersonController {
     public Response<Person> editPerson(@Validated @RequestBody PersonDTO personDto, @PathVariable Integer id) {
         Person person = personService.editPerson(id, personDto);
         if (person == null) {
-            throw new ResourceNotFoundException(String.format("Person with id %d not Found", id));
+            throw new ResourceNotFoundException(String.format(PERSON_NOT_FOUND_ID, id));
         }
         return new Response<>(SUCCESS, person);
     }
@@ -60,7 +60,7 @@ public class PersonController {
     public Response<List<Person>> getAll() {
         List<Person> persons = personService.getAllPersonList();
         if (persons == null || persons.isEmpty()) {
-            throw new ResourceNotFoundException("No Persons found");
+            throw new ResourceNotFoundException(PERSON_NOT_FOUND);
         }
         return new Response<>(SUCCESS, persons);
     }
@@ -74,7 +74,7 @@ public class PersonController {
     public Response<List<Address>> addAddressesToPerson(@PathVariable Integer personId, @RequestBody List<AddressDTO> addressDTOs) {
         Person personEntity = personService.getPersonById(personId);
         if (personEntity == null) {
-            throw new ResourceNotFoundException(String.format("Person with id %d not Found", personId));
+            throw new ResourceNotFoundException(String.format(PERSON_NOT_FOUND_ID, personId));
         }
         return new Response<>(SUCCESS, addressService.addAddresses(personEntity, addressDTOs));
     }

@@ -15,6 +15,7 @@ public class AddressDTO {
     private String postalCode;
 
     public Address copy(Address addressEntity) {
+        //TODO This can be improved if using mapstruct - will add i have more time
         addressEntity.setStreet(getStreet());
         addressEntity.setCity(getCity());
         addressEntity.setState(getState());

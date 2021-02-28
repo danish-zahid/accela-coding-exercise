@@ -38,6 +38,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Person addPerson(PersonDTO personDto) {
         Person person = new Person();
+        //TODO This can be improved if using mapstruct - will add i have more time
         person.setFirstName(personDto.getFirstName());
         person.setLastName(personDto.getLastName());
         return personRepository.save(person);
@@ -48,6 +49,7 @@ public class PersonServiceImpl implements PersonService {
     public Person editPerson(Integer id, PersonDTO personDTO) {
         Optional<Person> person = personRepository.findById(id);
         if (person.isPresent()) {
+            //TODO This can be improved if using mapstruct - will add i have more time
             Person personEntity = person.get();
             personEntity.setFirstName(personDTO.getFirstName());
             personEntity.setLastName(personDTO.getLastName());
