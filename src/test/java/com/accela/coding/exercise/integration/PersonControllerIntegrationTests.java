@@ -2,12 +2,9 @@ package com.accela.coding.exercise.integration;
 
 import com.accela.coding.exercise.controller.PersonController;
 import com.accela.coding.exercise.entities.Person;
-import com.accela.coding.exercise.repository.PersonRepository;
 import com.accela.coding.exercise.service.AddressService;
 import com.accela.coding.exercise.service.PersonService;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -51,6 +49,22 @@ public class PersonControllerIntegrationTests {
         mockMvc.perform(get("/person/{id}", Mockito.anyInt())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void given0Persons_WhenGetCountInvoked_ThenOkStatusAnd0Returned() throws Exception {
+        mockMvc.perform(get("/person/count")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void given0Persons_WhenGetCountInvoked_ThenOkStatusAnd5Returned() throws Exception {
+        given(personService.getPersonCount()).willReturn(5L);
+
+        mockMvc.perform(get("/person/count")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
 }

@@ -1,9 +1,13 @@
 package com.accela.coding.exercise.dto;
 
 import com.accela.coding.exercise.entities.Address;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AddressDTO {
     private String street;
     private String city;

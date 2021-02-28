@@ -65,6 +65,11 @@ public class PersonController {
         return new Response<>(SUCCESS, persons);
     }
 
+    @GetMapping("/count")
+    public Response<Long> getCount() {
+        return new Response<>(SUCCESS, personService.getPersonCount());
+    }
+
     @PostMapping("/{personId}/addresses")
     public Response<List<Address>> addAddressesToPerson(@PathVariable Integer personId, @RequestBody List<AddressDTO> addressDTOs) {
         Person personEntity = personService.getPersonById(personId);
