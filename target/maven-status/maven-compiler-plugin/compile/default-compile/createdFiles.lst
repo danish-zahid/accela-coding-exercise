@@ -1,1 +1,8 @@
+com/accela/coding/exercise/repository/AddressRepository.class
+com/accela/coding/exercise/dto/PersonDTO.class
+com/accela/coding/exercise/dto/AddressDTO.class
 com/accela/coding/exercise/AccelaCodingExerciseApplication.class
+com/accela/coding/exercise/advice/ResponseExceptionHandler.class
+com/accela/coding/exercise/entities/Person.class
+com/accela/coding/exercise/repository/PersonRepository.class
+com/accela/coding/exercise/entities/Address.class
