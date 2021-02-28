@@ -3,6 +3,7 @@ package com.accela.coding.exercise.integration;
 import com.accela.coding.exercise.controller.PersonController;
 import com.accela.coding.exercise.entities.Person;
 import com.accela.coding.exercise.repository.PersonRepository;
+import com.accela.coding.exercise.service.AddressService;
 import com.accela.coding.exercise.service.PersonService;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,13 +32,16 @@ public class PersonControllerIntegrationTests {
     @MockBean
     PersonService personService;
 
+    @MockBean
+    AddressService addressService;
+
     @Test
     public void givenPersonMocked_WhenGetInvoked_ThenMockValueReturned() throws Exception {
         Integer id = 1;
         Person person = new Person(1, "FirstName", "LastName", null);
         given(personService.getPersonById(id)).willReturn(person);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/person/{id}", Mockito.anyInt())
+        mockMvc.perform(MockMvcRequestBuilders.get("/person/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
