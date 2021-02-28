@@ -5,6 +5,7 @@ import com.accela.coding.exercise.entities.Person;
 import com.accela.coding.exercise.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,6 +44,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional
     public Person editPerson(Integer id, PersonDTO personDTO) {
         Optional<Person> person = personRepository.findById(id);
         if (person.isPresent()) {

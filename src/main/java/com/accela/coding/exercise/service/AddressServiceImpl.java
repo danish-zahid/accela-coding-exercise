@@ -6,6 +6,7 @@ import com.accela.coding.exercise.entities.Person;
 import com.accela.coding.exercise.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +35,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    @Transactional
     public List<Address> addAddresses(Person person, List<AddressDTO> addressDTOs) {
         return addressDTOs.stream()
                 .map(addressDTO -> {
