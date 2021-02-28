@@ -18,8 +18,9 @@ Follow the below steps to compile and run the project
 Once you see the project is Successfully running
 You can goto [Documentation](http://localhost:8080/swagger-ui/index.html)
 
-There you should be able to see full list of endpoints exposed by this project. 
+There you should be able to see full list of endpoints exposed by this project.
 
+Note: Once you stop the server data will be lost as it is using in memory database
 
 ### Reference Documentation
 For further reference, please consider the following sections:
