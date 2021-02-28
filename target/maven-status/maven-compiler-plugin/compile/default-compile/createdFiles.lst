@@ -11,4 +11,5 @@ com/accela/coding/exercise/exception/ResourceNotFoundException.class
 com/accela/coding/exercise/service/PersonService.class
 com/accela/coding/exercise/entities/Person.class
 com/accela/coding/exercise/util/Constants.class
+com/accela/coding/exercise/service/PersonServiceImpl.class
 com/accela/coding/exercise/entities/Address.class
