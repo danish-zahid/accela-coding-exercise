@@ -1,10 +1,14 @@
 package com.accela.coding.exercise.service;
 
+import com.accela.coding.exercise.dto.AddressDTO;
 import com.accela.coding.exercise.dto.PersonDTO;
 import com.accela.coding.exercise.entities.Person;
 import com.accela.coding.exercise.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -12,8 +16,23 @@ public class PersonServiceImpl implements PersonService {
     PersonRepository personRepository;
 
     @Override
+    public Long getPersonCount() {
+        return personRepository.count();
+    }
+
+    @Override
+    public List<Person> getAllPersonList() {
+        return personRepository.findAll();
+    }
+
+    @Override
     public Person getPersonById(Integer id) {
         return personRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deletePerson(Integer id) {
+        personRepository.deleteById(id);
     }
 
     @Override
@@ -22,5 +41,24 @@ public class PersonServiceImpl implements PersonService {
         person.setFirstName(personDto.getFirstName());
         person.setLastName(personDto.getLastName());
         return personRepository.save(person);
+    }
+
+    @Override
+    public Person editPerson(Integer id, PersonDTO personDTO) {
+        Optional<Person> person = personRepository.findById(id);
+        if (person.isPresent()) {
+            Person personEntity = person.get();
+            personEntity.setFirstName(personDTO.getFirstName());
+            personEntity.setLastName(personDTO.getLastName());
+            personRepository.save(personEntity);
+            return personEntity;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Person addAddressToPerson(Integer id, AddressDTO addressDTO) {
+        return null;
     }
 }
