@@ -1,6 +1,5 @@
 package com.accela.coding.exercise.service;
 
-import com.accela.coding.exercise.dto.AddressDTO;
 import com.accela.coding.exercise.dto.PersonDTO;
 import com.accela.coding.exercise.entities.Person;
 
@@ -18,6 +17,4 @@ public interface PersonService {
     Person addPerson(PersonDTO personDTo);
 
     Person editPerson(Integer id, PersonDTO personDTO);
-
-    Person addAddressToPerson(Integer id, AddressDTO addressDTO);
 }

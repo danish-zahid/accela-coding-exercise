@@ -1,6 +1,5 @@
 package com.accela.coding.exercise.service;
 
-import com.accela.coding.exercise.dto.AddressDTO;
 import com.accela.coding.exercise.dto.PersonDTO;
 import com.accela.coding.exercise.entities.Person;
 import com.accela.coding.exercise.repository.PersonRepository;
@@ -57,8 +56,4 @@ public class PersonServiceImpl implements PersonService {
         }
     }
 
-    @Override
-    public Person addAddressToPerson(Integer id, AddressDTO addressDTO) {
-        return null;
-    }
 }
