@@ -16,7 +16,7 @@ Follow the below steps to compile and run the project
 
 ## Testing instructions
 Once you see the project is Successfully running
-You can goto [Documentation](http://localhost:8080/swagger-ui/index.html)
+You can goto [Documentation](http://localhost:8080/swagger-ui.html)
 
 There you should be able to see full list of endpoints exposed by this project.
 
